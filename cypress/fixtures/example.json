@@ -1,0 +1,8 @@
+{
+  "sampleKey": "sampleValue",
+  "anotherKey": [
+    "value1",
+    "value2",
+    "value3"
+  ]
+}
