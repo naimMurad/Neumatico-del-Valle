@@ -7,7 +7,7 @@ describe('Automatización de login', () => {
         it('Ingreso de credenciales de login', () => {
         // Parámetros de login
         const credenciales = {
-            username: 'superadmin1', // Reemplaza con el usuario deseado
+            username: 'Naim Murad', // Reemplaza con el usuario deseado
             password: '1234' // Reemplaza con la contraseña deseada
         };
         // Esperar a que la página cargue completamente antes de interactuar con los elementos
