@@ -26,10 +26,8 @@ it('Debe crear una órden de compra', () => {
     cy.get('div.subtitle-small').eq(5).click();
     cy.wait(800);
     cy.get('i.eva-chevron-down-outline').parent().click();
-    cy.wait(800);
-    cy.get('input[type="search"]').type('Prueba de Movimiento 1');
-    cy.wait(800);
-    cy.get('div[role="option"] div').eq(0).click({ force: true });
+    cy.wait(800);    
+    cy.contains('div', 'Pegatina Nª1 Rocket League').click();
     cy.wait(800);
     cy.get('button.q-mt-md i').click();
     cy.wait(800);    
@@ -91,5 +89,17 @@ it('Debe crear una órden de compra', () => {
     cy.wait(800);
     cy.get('i.eva-plus-outline').eq(1).click();
     cy.wait(800);
-    cy.contains('span', ' Guardar ').click();    
+    cy.contains('span', ' Guardar ').click();
+    
+    // Confirmar Recepción
+    cy.wait(800);
+    cy.visit('https://web-gestioncomercial.dev2.macamedia.com.ar/#/compras/recepcion');
+    cy.wait(800);
+    cy.get('button.text-positive i').eq(0).click();
+    cy.wait(800);
+    cy.get('input[aria-label="N° de remito *"]').type(randomNumber.toString());
+    cy.wait(800);
+    cy.get('div[role="listitem"] input').type(1);
+    cy.wait(800);
+    cy.contains('span', ' Guardar ').click();
 });
