@@ -68,4 +68,22 @@ it('Debe crear una órden de venta', () => {
     cy.get('i.eva-radio-button-off-outline').parent().click();
     cy.wait(1000);
     cy.contains('span', ' Guardar ').click();
+
+    // Facturamos la venta
+    cy.wait(1000);
+    cy.get('button.text-positive span').eq(1).click();
+    cy.wait(1000);
+    cy.get('div.q-field__native').eq(0).click();
+    cy.wait(1000);
+    cy.get('.q-item__label').contains('B').click();
+    cy.wait(1000);
+    cy.get('div.q-field__native').eq(1).click();
+    cy.wait(1000);
+    cy.contains('span', 'Pago al contado').click();
+    cy.wait(1000);
+    cy.get('input[type="search"]').type('Leandro Bravo');
+    cy.wait(1000);
+    cy.get('.q-item__label').contains('Leandro Bravo').click();
+    cy.wait(1000);
+    cy.contains('span', ' Facturar ').click();    
 });
