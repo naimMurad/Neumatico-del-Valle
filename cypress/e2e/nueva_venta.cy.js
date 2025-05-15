@@ -23,7 +23,7 @@ it('Debe crear una órden de venta', () => {
     cy.wait(1000);
     cy.get('i.eva-arrow-ios-downward-outline').eq(2).click();
     cy.wait(1000);
-    cy.get('.q-item__label.subtitle-small').eq(0).click();
+    cy.get('.q-item__label.subtitle-small').eq(1).click();
     cy.wait(1000);
     cy.get('i.eva-chevron-down-outline').parent().click();
     cy.wait(1000);
@@ -37,7 +37,7 @@ it('Debe crear una órden de venta', () => {
     cy.wait(1000);
     cy.get('span.cursor-pointer i').eq(2).click();
     cy.wait(1000);
-    cy.contains('div', 'Cuenta corriente').click();
+    cy.contains('div', 'Efectivo Santiago').click();
     cy.wait(1000);
     cy.get('div.q-ml-xl i').click();
     cy.wait(1000);
