@@ -18,6 +18,8 @@ beforeEach(() => {
 });
 
 it('Debe crear una órden de compra', () => {
+    let importeTotal = '';
+
     cy.wait(1000); // Esperar a que la página cargue completamente antes de interactuar con los elementos
     cy.get('i.eva-plus-outline').click();
     cy.wait(1000);
@@ -52,10 +54,26 @@ it('Debe crear una órden de compra', () => {
     cy.get('button[data-autofocus="true"]').contains('Confirmar').click();
     cy.wait(1000);
 
+    // Realizamos el registro del Pago
+    cy.visit('https://web-gestioncomercial.dev2.macamedia.com.ar/#/compras/comprobantes');
+    cy.wait(1000); // Esperar a que la página cargue completamente antes de interactuar con los elementos
+    cy.get('i.eva-credit-card-outline').eq(1).click();
+    cy.wait(1000);
+    cy.get('div.q-field__native').eq(0).click();
+    cy.wait(1000);
+    cy.get('div.q-manual-focusable div').eq(2).click();
+    cy.wait(1000);
+    cy.get('div.q-field__native').eq(1).click();
+    cy.wait(1000);
+    cy.contains('span', 'Efectivo Santiago').click();
+    cy.wait(1000);
+    cy.contains('span', ' Guardar ').click();
+    cy.wait(1000);
+
     // Visitamos la página de Comprobantes Internos para generar la factura
     cy.visit('https://web-gestioncomercial.dev2.macamedia.com.ar/#/compras/comprobantes');
     cy.wait(1000); // Esperar a que la página cargue completamente antes de interactuar con los elementos
-    cy.get('button.text-primary i').eq(1).click();
+    cy.get('i.eva-file-text-outline').eq(2).click();
     cy.wait(1000);
     cy.get('input[data-autofocus="true"]').click();
     cy.wait(1000);
@@ -66,8 +84,12 @@ it('Debe crear una órden de compra', () => {
     cy.wait(1000);
     cy.contains('span', 'B').click();
     cy.wait(1000);
-    const randomThreeDigitNumber = Math.floor(100 + Math.random() * 900);
-    cy.get('input[aria-label="Subtotal *"]').type(randomThreeDigitNumber.toString());
+    cy.get('input[aria-label="Importe total *"]').invoke('val').then((val) => {
+        importeTotal = val;
+        cy.log('Importe Total:', importeTotal);
+        cy.get('input[aria-label="Subtotal *"]').type(importeTotal);
+        cy.get('input[aria-label="Importe"]').eq(3).type(importeTotal);
+    });
     cy.wait(1000);
     cy.get('input[aria-label="Importe de descuento *"]').type('0');
     cy.wait(1000);
@@ -84,9 +106,7 @@ it('Debe crear una órden de compra', () => {
     cy.contains('span', 'Transferencia bancaria').click();
     cy.wait(1000);
     cy.get('div.subtitle').contains('Métodos de pago').parent().find('div.q-field__label.no-pointer-events.absolute.ellipsis').contains('Importe').click({ force: true });
-    cy.wait(1000);
-    cy.get('input[aria-label="Importe"]').eq(3).type(randomThreeDigitNumber.toString());
-    cy.wait(1000);
+    cy.wait(1000);    
     cy.get('i.eva-plus-outline').eq(1).click();
     cy.wait(1000);
     cy.contains('span', ' Guardar ').click();
