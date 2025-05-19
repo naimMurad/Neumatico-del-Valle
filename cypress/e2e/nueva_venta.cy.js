@@ -23,7 +23,7 @@ it('Debe crear una órden de venta', () => {
     cy.wait(1000);
     cy.get('i.eva-arrow-ios-downward-outline').eq(2).click();
     cy.wait(1000);
-    cy.get('.q-item__label.subtitle-small').eq(1).click();
+    cy.get('.q-item__label.subtitle-small').eq(4).click();
     cy.wait(1000);
     cy.get('i.eva-chevron-down-outline').parent().click();
     cy.wait(1000);
@@ -37,7 +37,7 @@ it('Debe crear una órden de venta', () => {
     cy.wait(1000);
     cy.get('span.cursor-pointer i').eq(2).click();
     cy.wait(1000);
-    cy.contains('div', 'Efectivo Santiago').click();
+    cy.contains('div', 'Efectivo').click();
     cy.wait(1000);
     cy.get('div.q-ml-xl i').click();
     cy.wait(1000);
@@ -80,10 +80,6 @@ it('Debe crear una órden de venta', () => {
     cy.get('div.q-field__native').eq(1).click();
     cy.wait(1000);
     cy.contains('span', 'Pago al contado').click();
-    cy.wait(1000);
-    cy.get('input[type="search"]').type('Leandro Bravo');
-    cy.wait(1000);
-    cy.get('.q-item__label').contains('Leandro Bravo').click();
     cy.wait(1000);
     cy.contains('span', ' Facturar ').click();    
 });
