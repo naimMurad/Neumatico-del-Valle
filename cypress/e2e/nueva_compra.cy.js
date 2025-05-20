@@ -65,7 +65,7 @@ it('Debe crear una órden de compra', () => {
     cy.wait(1000);
     cy.get('div.q-field__native').eq(1).click();
     cy.wait(1000);
-    cy.contains('span', 'Efectivo Santiago').click();
+    cy.contains('span', 'Efectivo').click();
     cy.wait(1000);
     cy.contains('span', ' Guardar ').click();
     cy.wait(1000);
