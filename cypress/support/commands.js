@@ -2,7 +2,7 @@ Cypress.Commands.add('login', () => {
     cy.log('Ejecutando comando: cargar_parametros');
 
     const credenciales = {
-        username: 'superadmin1',
+        username: 'Naim Murad',
         password: '1234'
     };
 

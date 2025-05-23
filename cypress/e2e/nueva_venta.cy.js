@@ -71,7 +71,7 @@ it('Debe crear una órden de venta', () => {
 
     // Facturamos la venta
     cy.wait(1000);
-    cy.contains('span', ' Aceptar ').click();
+    cy.get('.q-card.q-dialog-plugin').contains('button', 'Aceptar').click({force: true});
     cy.wait(1000);
     cy.get('div.q-field__native').eq(0).click();
     cy.wait(1000);

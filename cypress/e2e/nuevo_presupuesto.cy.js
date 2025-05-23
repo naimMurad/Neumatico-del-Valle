@@ -41,4 +41,15 @@ it('Debe crear un nuevo presupuesto', () => {
     cy.wait(1000);
     cy.contains('span', ' Finalizar ').click();
     cy.wait(1000);
+    cy.get('i.eva-email-outline').eq(0).click();
+    cy.wait(1000);
+    cy.reload();
+    cy.wait(2000);
+    cy.get('i.eva-plus-outline').should('be.visible');
+    cy.wait(1000);
+    cy.get('button.text-positive i').eq(0).click();
+    cy.wait(1000);
+    cy.get('input[data-autofocus="true"]').type('23/05/2025');
+    cy.wait(1000);
+    cy.contains('span', ' Guardar ').click();
 });
